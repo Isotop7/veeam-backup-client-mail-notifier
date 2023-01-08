@@ -13,7 +13,7 @@ sudo apt install mailutils
 You need to configure a local mta to relay the mail. For `mailcow-dockerized` deployment with local postfix you can use this guide:
 [mailcow-dockerized Local MTA](https://docs.mailcow.email/post_installation/firststeps-local_mta/)
 
-The IP address for the `postfix` container in `mailcow-dockerozed` can be different than in these docs. You can get it with the following command:
+The IP address for the `postfix` container in `mailcow-dockerized` can be different than in these docs. You can get it with the following command:
 
 ```bash
 networkId=$(sudo docker network ls | grep mailcowdockerized | cut -f1 -d' ')
