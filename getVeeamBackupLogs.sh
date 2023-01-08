@@ -3,7 +3,7 @@
 # User variables
 sender="Veeam-Backup"                       # Display name of sender
 recipient=""                                # Mail address of the recipient
-checkInterval=10                            # 10 seconds
+runDelay=30                                 # Initial delay
 
 # Check for root privileges
 if [[ "$EUID" -ne 0 ]]
@@ -26,14 +26,8 @@ then
     exit 3
 fi
 
-# Check for running job and sleep until its done
-pid=$(pgrep veeamagent)
-while ! [[ -z "$pid" ]]
-do
-    echo "[WARNING] Veeam job is currently running. Waiting for end ..."
-    sleep $checkInterval
-    pid=$(pgrep veeamagent)
-done
+# Wait for other tasks to settle
+sleep $runDelay
 
 # When no job is running or running job finished, get variables from veeamconfig
 lastBackup=$(veeamconfig session list | sed -n 'x;$p')

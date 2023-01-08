@@ -36,9 +36,12 @@ sudo  postconf -e 'relayhost = 172.25.1.1'
 
 Before using the script, please adjust the variables `sender` and `recipient` to your needs.
 
+## Why does it use an initial delay?
+
+In order to wait for other post-backup tasks to settle, we just wait a few seconds to not return RUNNING states.
+
 ## What does it need?
 
-- `pgrep`
 - `mailx` (from mailutils)
 - Veeam Backup Client
 - Local MTA for sending mail
