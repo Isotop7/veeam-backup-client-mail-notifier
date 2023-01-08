@@ -1,5 +1,7 @@
 # veeam-backup-client-mail-notifier
 
+## How does it work?
+
 This small scripts gets the status of the last backup and sends the information via mail to the recipient.
 
 In order to function properly, you need to have elevated permissions, the `veeam` client and `mailx`
@@ -33,3 +35,10 @@ sudo  postconf -e 'relayhost = 172.25.1.1'
 ```
 
 Before using the script, please adjust the variables `sender` and `recipient` to your needs.
+
+## What does it need?
+
+- `pgrep`
+- `mailx` (from mailutils)
+- Veeam Backup Client
+- Local MTA for sending mail
